@@ -2,30 +2,70 @@
   "name": "vue-test-project",
   "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "Krotov Petr",
+    "email": "83280920+KrotovPetr@users.noreply.github.com"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "main": "index.js",
   "dependencies": {
-    "core-js": "3.8.3",
-    "typescript": "5.0.4",
-    "vue": "3.2.13"
+    "antd": "^5.5.1",
+    "antv": "0.2.2",
+    "at-ui": "^1.3.3",
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13",
+    "vue-class-component": "8.0.0-rc.1"
   },
   "devDependencies": {
-    "@babel/core": "7.12.16",
-    "@babel/eslint-parser": "7.12.16",
-    "@vue/cli-plugin-babel": "5.0.0",
-    "@vue/cli-plugin-eslint": "5.0.0",
-    "@vue/cli-service": "5.0.8",
-    "eslint": "7.32.0",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-vue": "8.0.3",
-    "prettier": "2.4.1"
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@typescript-eslint/eslint-plugin": "5.4.0",
+    "@typescript-eslint/parser": "5.4.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "typescript": "~4.5.5"
   },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended",
+      "@vue/typescript"
+    ],
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
   "_id": "vue-test-project@1.0.0",
+  "bugs": {
+    "url": "https://github.com/KrotovPetr/vue-test-project/issues"
+  },
+  "homepage": "https://github.com/KrotovPetr/vue-test-project#readme",
   "license": "MIT",
-  "readme": "ERROR: No README data found!"
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrotovPetr/vue-test-project.git"
+  }
 }
