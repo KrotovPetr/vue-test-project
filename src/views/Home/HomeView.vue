@@ -1,52 +1,17 @@
 <template>
-        <div v-for="pokemon in pokemonData" :key="pokemon.id">
-          <div @click="$router.push(`/pokemon/${pokemon.name}`)">{{pokemon.url}}</div>
-        </div>
+  <div :class="$style.container">
+    <poke-list></poke-list>
+  </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
+import PokeList from "../../components/pokeList/PokeList.vue";
 
 export default defineComponent({
   name: "HomeView",
-  data() {
-    return {
-      pokemonData: []
-    }
-  },
-  methods: {
-
-    async fetchPokemons() {
-      try {
-        const requestOptions = {
-          method: 'GET',
-          redirect: 'follow',
-
-        };
-        //@ts-ignore
-        const result = await fetch("https://pokeapi.co/api/v2/pokemon?limit=30&offset=100", requestOptions)
-            .then(response => response.json())
-            .then(result => result)
-            .catch(error => console.log('error', error));
-        console.log(result.results)
-        this.pokemonData = result.results.map((pokemon: any)=>{
-          return {id: Date.now(), ...pokemon}
-        });
-
-      } catch (e) {
-        alert('Ошибка')
-      } finally {
-        console.log('finally')
-      }
-    }
-  },
-  mounted() {
-    this.fetchPokemons();
-  },
-
+  components: {PokeList},
 })
 </script>
 
-<style scoped>
-
-</style>
+<style module lang="scss" src="./homeView.module.scss"></style>

@@ -1,9 +1,6 @@
 <template>
-  <div>
     <top-header/>
-    <router-view/>
-  </div>
-
+    <router-view></router-view>
 </template>
 
 <script>
@@ -15,4 +12,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400&family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+</style>

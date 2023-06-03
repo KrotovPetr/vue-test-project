@@ -1,14 +1,14 @@
-import {createRouter, createWebHistory} from "vue-router";
+import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
 import HomeView from "@/views/Home/HomeView.vue";
 import PokemonView from "@/views/Pokemon/PokemonView.vue";
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         component: HomeView
     },
     {
-        path: '/pokemon',
+        path: '/pokemon/:name',
         component: PokemonView,
     }
 ]
