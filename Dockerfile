@@ -1,9 +1,7 @@
-FROM node:lts-alpine
-RUN yarn install -g http-server
+FROM node:14-alpine
 WORKDIR /app
-COPY package*.json ./
-RUN yarn install
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 COPY . .
-RUN yarn run build
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+RUN yarn build
+CMD ["yarn", "serve"]
