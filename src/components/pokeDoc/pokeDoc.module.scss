@@ -1,0 +1,55 @@
+.pokeDoc{
+  width: 100%;
+  height:fit-content;
+
+  .charact{
+    box-sizing: border-box;
+    margin:20px 0;
+    width:100%;
+
+
+    .pText{
+      font-size: 14px;
+      margin:2px 0;
+    }
+
+    .subHeader{
+      margin: 15px 0 5px 0;
+    }
+
+    .namesContainer{
+      width:100%;
+      height:fit-content;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: space-between;
+
+      .charactHeader{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        width:100%;
+
+
+      }
+
+      .nameData{
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        width:100%;
+
+        p{
+          flex: 1 1 auto;
+        }
+      }
+    }
+  }
+}
+
+.header{
+  width: 33%;
+}

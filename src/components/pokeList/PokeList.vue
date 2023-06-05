@@ -5,8 +5,15 @@
     </div>
 
   </div>
-  <div :class="$style.pagination"></div>
+  <div :class="$style.pagination">
+    <a-pagination v-model:current="current" :total="pageCount" v-model:pageSize="pageSize" show-size-changer/>
+  </div>
 </template>
+
+
+
+
+
 
 <script lang="ts" src="./pokeList.ts"></script>
 

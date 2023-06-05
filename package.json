@@ -14,11 +14,12 @@
   "main": "index.js",
   "dependencies": {
     "@vue/runtime-core": "^3.3.4",
-    "antd": "^5.5.1",
-    "antv": "0.2.2",
+    "ant-design-vue": "^3.2.20",
     "at-ui": "^1.3.3",
+    "at-ui-style": "^1.5.1",
     "core-js": "^3.8.3",
     "es6-promise": "^4.2.8",
+    "uuid": "9.0.0",
     "vue": "^3.2.13",
     "vue-class-component": "8.0.0-rc.1",
     "vue-router": "4.2.2",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "5.4.0",
     "@typescript-eslint/parser": "5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
@@ -38,7 +40,8 @@
     "eslint-plugin-vue": "^8.0.3",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",
-    "typescript": "~4.5.5"
+    "typescript": "~4.5.5",
+    "vue-cli-plugin-chakra-ui": "~1.0.3"
   },
   "eslintConfig": {
     "root": true,
