@@ -1,17 +1,22 @@
 import {defineComponent, PropType} from "vue";
 // @ts-ignore
 import {v4 as uuidv4} from "uuid";
+import {mapState} from "vuex";
 
 export default defineComponent({
     name: "PokeDoc",
-    props: {
-        data: {type: Object as PropType<any>, required: true}
+    computed: {
+        ...mapState('moduleMain', ['currentPokemonData']),
     },
+
     methods: {
         generateUuid(nameObj: any): string{
-            console.log(name)
             return uuidv4();
         },
 
+    },
+
+    mounted() {
+        console.log(2);
     }
 })

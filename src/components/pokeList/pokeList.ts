@@ -1,41 +1,45 @@
-import {defineComponent, ref, watch} from "vue";
+import {defineComponent, Ref, ref, watch} from "vue";
 import PokeCard from "@/components/pokeCard/PokeCard.vue";
-import {fetchPokemons} from "@/utils/functions/pokemonListFetch";
+import {useStore} from "vuex";
 
 export default defineComponent({
     name: "PokeList",
     components: {PokeCard},
 
     setup() {
-        const pageSize = ref(10);
-        const current = ref(1);
-        const pokemonData = ref([]);
-        const pageCount = ref(1);
+        const store = useStore();
+        const {size, page}: {size: number, page: number} = store.state.moduleMain;
+
+
+        const pageSize: Ref<number> = ref(size);
+        const current: Ref<number> = ref(page);
+        const pokemonData: Ref<[] | any>= ref([]);
+        const pageCount:Ref<number> = ref(1);
+
 
         watch([pageSize, current], ([newPageSize, newCurrent], [oldPageSize, oldCurrent]) => {
+            store.dispatch("moduleMain/setCurrentOptions", {pageSize: pageSize.value, pageNumber: current.value});
             fetchPokemons(newPageSize, newCurrent).catch(e=>console.error(e));
         });
 
-        const fetchPokemons = async (pageSize: any, current: any) => {
-                const requestOptions: any = {
+        const fetchPokemons = async (pageSize: number, current: number) => {
+                const idArea: number = (current-1)*pageSize;
+                const result = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${idArea}`,  {
                     method: 'GET',
                     redirect: 'follow',
-                };
-                const result = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${current}`, requestOptions)
+                })
                     .then(response => response.json())
                     .then(result => result)
                     .catch(error => console.log('error', error));
-
                 pokemonData.value = result.results.map((pokemon: any) => {
                     return { id: Date.now(), ...pokemon };
                 });
 
-                // pageCount.value = Math.ceil(result.count/pageSize);
                 pageCount.value = result.count;
 
         };
 
-        fetchPokemons(pageSize.value, current.value).catch(e=>console.error(e));
+        fetchPokemons(size, page).catch(e=>console.error(e));
 
         return {
             pageSize,
@@ -44,5 +48,7 @@ export default defineComponent({
             pageCount
         };
     },
+
+
 
 })

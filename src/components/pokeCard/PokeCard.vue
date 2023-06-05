@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.cardBody">
     <h1 :class="$style.header">{{data.name}}</h1>
-    <button :class="$style.button" @click="toPokemonPage($router, data.name)">Подробнее...</button>
+    <button :class="$style.button" @click="toPokemonPage($router, data)">Подробнее...</button>
   </div>
 </template>
 

@@ -5,7 +5,7 @@
       <h1>Подождите</h1>
     </div>
     <div v-else :class="$style.pokemonInfo">
-      <poke-doc :data="currentPokemonData"></poke-doc>
+      <poke-doc/>
     </div>
   </div>
 </template>

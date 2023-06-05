@@ -2,23 +2,52 @@ import { Module } from 'vuex';
 
 interface ModuleState {
     currentPage: number,
-    pokemonLink: string,
+    pokemonName: string,
+    page: number,
+    size: number,
+    currentPokemonData: null | any
 }
 
 const moduleMain: Module<ModuleState, any> = {
     namespaced: true,
     state: {
        currentPage: 1,
-       pokemonLink: "emptyLink"
+       pokemonName: "",
+       page: 1,
+       size: 10,
+       currentPokemonData: null
     },
     getters: {
-        // Определите геттеры модуля 1
+
     },
     mutations: {
-        // Определите мутации модуля 1
+        setPokemonData(state, data) {
+            state.pokemonName = data.name;
+        },
+        clearPokemonData(state, data){
+            state.pokemonName = "";
+        },
+        changeOptions(state, data){
+            state.page = data.pageNumber;
+            state.size = data.pageSize;
+        },
+        changePokemonData(state, data){
+            state.currentPokemonData = data;
+        }
     },
     actions: {
-        // Определите действия модуля 1
+        setCurrentOptions({commit}, content){
+            commit("changeOptions", content);
+        },
+
+        updatePokemonData({commit}, content){
+            commit("setPokemonData", content);
+        },
+
+        fetchCurrentPokemonData: async ({commit},content) =>{
+            const result = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${content}/`).then(data => data.json()).then(data => data);
+            commit('changePokemonData', result);
+        }
     },
 };
 
