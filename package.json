@@ -9,8 +9,10 @@
   "scripts": {
     "serve": "vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "vue-cli-service build && gh-pages -d dist"
   },
+  "homepage": "./",
   "main": "index.js",
   "dependencies": {
     "@vue/runtime-core": "^3.3.4",
@@ -19,6 +21,7 @@
     "at-ui-style": "^1.5.1",
     "core-js": "^3.8.3",
     "es6-promise": "^4.2.8",
+    "gh-pages": "^5.0.0",
     "uuid": "9.0.0",
     "vue": "^3.2.13",
     "vue-class-component": "8.0.0-rc.1",
@@ -68,7 +71,6 @@
   "bugs": {
     "url": "https://github.com/KrotovPetr/vue-test-project/issues"
   },
-  "homepage": "https://github.com/KrotovPetr/vue-test-project#readme",
   "license": "MIT",
   "readme": "ERROR: No README data found!",
   "repository": {
