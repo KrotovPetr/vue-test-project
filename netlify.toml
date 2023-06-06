@@ -1,3 +1,3 @@
 [build]
-  command = "docker-compose build"
+  command = "yarn build"
   publish = "dist"
