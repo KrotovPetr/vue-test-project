@@ -1,6 +1,8 @@
 import {defineComponent, Ref, ref, watch} from "vue";
 import PokeCard from "@/components/pokeCard/PokeCard.vue";
 import {useStore} from "vuex";
+import {fetchPokemonsFunc} from "@/utils/functions/fetchPokemonsFunc";
+import {TPokeCard} from "@/utils/types/pokeCardType";
 
 export default defineComponent({
     name: "PokeList",
@@ -13,7 +15,7 @@ export default defineComponent({
 
         const pageSize: Ref<number> = ref(size);
         const current: Ref<number> = ref(page);
-        const pokemonData: Ref<[] | any>= ref([]);
+        const pokemonData: Ref<[] | TPokeCard[]>= ref([]);
         const pageCount:Ref<number> = ref(1);
 
 
@@ -23,20 +25,9 @@ export default defineComponent({
         });
 
         const fetchPokemons = async (pageSize: number, current: number) => {
-                const idArea: number = (current-1)*pageSize;
-                const result = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${pageSize}&offset=${idArea}`,  {
-                    method: 'GET',
-                    redirect: 'follow',
-                })
-                    .then(response => response.json())
-                    .then(result => result)
-                    .catch(error => console.log('error', error));
-                pokemonData.value = result.results.map((pokemon: any) => {
-                    return { id: Date.now(), ...pokemon };
-                });
-
+                const result: {arr: TPokeCard[], count: number} = await fetchPokemonsFunc(pageSize, current);
+                pokemonData.value = result.arr;
                 pageCount.value = result.count;
-
         };
 
         fetchPokemons(size, page).catch(e=>console.error(e));

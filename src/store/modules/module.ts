@@ -1,11 +1,13 @@
 import { Module } from 'vuex';
+import {TPokemon} from "@/utils/types/pokemonType";
 
 interface ModuleState {
     currentPage: number,
     pokemonName: string,
     page: number,
     size: number,
-    currentPokemonData: null | any
+    currentPokemonData: null | any,
+
 }
 
 const moduleMain: Module<ModuleState, any> = {
@@ -15,7 +17,7 @@ const moduleMain: Module<ModuleState, any> = {
        pokemonName: "",
        page: 1,
        size: 10,
-       currentPokemonData: null
+       currentPokemonData: null,
     },
     getters: {
 
@@ -26,6 +28,7 @@ const moduleMain: Module<ModuleState, any> = {
         },
         clearPokemonData(state, data){
             state.pokemonName = "";
+            state.currentPokemonData=null;
         },
         changeOptions(state, data){
             state.page = data.pageNumber;
@@ -45,8 +48,12 @@ const moduleMain: Module<ModuleState, any> = {
         },
 
         fetchCurrentPokemonData: async ({commit},content) =>{
-            const result = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${content}/`).then(data => data.json()).then(data => data);
+            const result: TPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${content}/`).then(data => data.json()).then(data => data);
             commit('changePokemonData', result);
+        },
+
+        clearPokemonData({commit}, content){
+            commit('clearPokemonData')
         }
     },
 };

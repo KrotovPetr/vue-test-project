@@ -24,4 +24,21 @@
     width:100%;
   }
 
+  .pokemonLoading{
+    width:100%;
+    height:80vh;
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    .loadingDescription{
+      font-size: 18px;
+      margin: 20px 0 0 0;
+      font-weight: bolder;
+      color: #222222;
+
+    }
+  }
+
 }

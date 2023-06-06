@@ -1,16 +1,19 @@
-import {defineComponent, watch} from 'vue';
+import {defineComponent} from 'vue';
 import {mapState, Store, useStore} from 'vuex';
 import PokeDoc from "@/components/pokeDoc/PokeDoc.vue";
 import {Router} from "vue-router";
+import CustomSpinner from "@/components/customSpinner/CustomSpinner.vue";
+
 
 export default defineComponent({
     name: "PokemonPage",
-    components: {PokeDoc},
+    components: {PokeDoc, CustomSpinner},
 
     methods: {
         toHome(router:Router){
             router.push('/');
         }
+
     },
 
     computed: {
@@ -20,8 +23,12 @@ export default defineComponent({
     mounted(){
         const store: Store<any> = useStore();
         const name: string = this.$route.path.split("/")[2];
-        console.log('р')
         store.dispatch("moduleMain/fetchCurrentPokemonData", name);
+    },
+
+    unmounted() {
+        const store: Store<any> = useStore();
+        store.dispatch("moduleMain/clearPokemonData");
     }
 
 })

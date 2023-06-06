@@ -1,10 +1,12 @@
 <template>
   <div :class="$style.pokemonPage">
-    <button @click="toHome($router)" :class="$style.button">	&#8592; На главную</button>
-    <div v-if="!currentPokemonData">
-      <h1>Подождите</h1>
+    <div v-if="!currentPokemonData" :class="$style.pokemonLoading">
+      <transition-group name="pokeLoading">
+        <custom-spinner/>
+      </transition-group>
     </div>
     <div v-else :class="$style.pokemonInfo">
+      <button @click="toHome($router)" :class="$style.button">	&#8592; На главную</button>
       <poke-doc/>
     </div>
   </div>

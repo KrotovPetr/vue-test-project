@@ -1,4 +1,4 @@
-export type PokeCard = {
+export type TPokeCard = {
     id: number,
     url: string,
     name: string,
