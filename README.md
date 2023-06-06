@@ -13,12 +13,6 @@
  <img src="https://img.shields.io/badge/Docker-darkblue?style=for-the-badge&logo=Docker&logoColor=white" alt="Docker Badge"/>
 </div>
 
-## Хостинг
-
-<div id="technologyStack">
-<img src="https://img.shields.io/badge/Netlify-darkgreen?logo=Netlify&logoColor=white&style=for-the-badge" alt="Netlify Badge"/>
-</div>
-
 ## API
 
 <div id="technologyStack">
@@ -40,7 +34,7 @@ yarn serve
 docker-compose up
 ```
 
-Также можно посмотреть развёрнутое приложение на Netlify по ссылке: <a href="https://master--stellular-centaur-91dc38.netlify.app">Перейти на сайт</a>
+Также можно посмотреть развёрнутое приложение по ссылке: <a href="http://51.250.86.122:3001">Перейти на сайт</a>
 
 <hr/>
 
